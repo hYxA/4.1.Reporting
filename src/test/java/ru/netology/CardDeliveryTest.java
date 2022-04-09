@@ -1,13 +1,13 @@
 package ru.netology;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 
-import static com.codeborne.selenide.Condition.exactText;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.withText;
 import static com.codeborne.selenide.Selenide.*;
@@ -19,8 +19,15 @@ public class CardDeliveryTest {
     private final String secondDate = generateDate(15);
     private final String expiredDate = generateDate(-15);
     private final String city = generateCity();
-    private final String name = generateName();
     private final String phone = generatePhone();
+    private final String name = generateName();
+
+    void setupVar(String name) {
+        while (name.contains("ё")) {
+            name = generateName();
+
+        }
+    }
 
     @BeforeEach
     void setupTest() {

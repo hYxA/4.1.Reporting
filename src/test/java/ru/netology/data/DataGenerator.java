@@ -15,7 +15,7 @@ public class DataGenerator {
     }
 
     public static String generateCity() {
-        List list = Arrays.asList(
+        List<String> list = Arrays.asList(
                 "Майкоп", "Горно-Алтайск", "Уфа", "Улан-Удэ", "Махачкала", "Магас", "Нальчик", "Элиста",
                 "Черкесск", "Петрозаводск", "Сыктывкар", "Симферополь", "Йошкар-Ола", "Саранск",
                 "Якутск", "Владикавказ", "Казань", "Кызыл", "Ижевск", "Абакан", "Грозный", "Чебоксары",
@@ -30,7 +30,7 @@ public class DataGenerator {
                 "Ярославль", "Севастополь", "Биробиджан", "Нарьян-Мар", "Ханты-Мансийск", "Анадырь"
         );
         Random item = new Random();
-        String randomElement = (String) list.get(item.nextInt(list.size()));
+        String randomElement = list.get(item.nextInt(list.size()));
         System.out.println(randomElement);
         return randomElement;
     }
