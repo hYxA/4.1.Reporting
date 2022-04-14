@@ -1,5 +1,8 @@
 package ru.netology;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,15 +25,28 @@ public class CardDeliveryTest {
     private final String phone = generatePhone();
     private final String name = generateName();
 
-    void setupVar(String name) {
+    // для исключения буквы "ё"
+    void preSet(String name) {
         while (name.contains("ё")) {
             name = generateName();
 
         }
     }
 
+
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
+    }
+
     @BeforeEach
     void setupTest() {
+        preSet(name);
         open("http://localhost:9999");
     }
 
