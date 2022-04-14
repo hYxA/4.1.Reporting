@@ -25,17 +25,13 @@ public class CardDeliveryTest {
     private final String phone = generatePhone();
     private final String name = generateName();
 
-    // для исключения буквы "ё"
-    void preSet(String name) {
+    @BeforeAll
+    static void setUpAll(String name) {
+        // для исключения буквы "ё"
         while (name.contains("ё")) {
             name = generateName();
-
         }
-    }
 
-
-    @BeforeAll
-    static void setUpAll() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
@@ -46,7 +42,6 @@ public class CardDeliveryTest {
 
     @BeforeEach
     void setupTest() {
-        preSet(name);
         open("http://localhost:9999");
     }
 
