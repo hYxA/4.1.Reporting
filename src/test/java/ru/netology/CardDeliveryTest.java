@@ -25,13 +25,12 @@ public class CardDeliveryTest {
     private final String phone = generatePhone();
     private String name = generateName();
 
+
     @BeforeAll
-    static void setUpName(String name) {
-        // для исключения буквы "ё"
-        while (name.contains("ё")) name = generateName();
-    }
-    @BeforeAll
-    static void setUpListener() {
+    static void setUpAll(String name) {
+            // для исключения буквы "ё"
+            while (name.contains("ё")) name = generateName();
+
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
