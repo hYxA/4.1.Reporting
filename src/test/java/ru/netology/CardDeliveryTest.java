@@ -23,15 +23,15 @@ public class CardDeliveryTest {
     private final String expiredDate = generateDate(-15);
     private final String city = generateCity();
     private final String phone = generatePhone();
-    private final String name = generateName();
+    private String name = generateName();
 
     @BeforeAll
-    static void setUpAll(String name) {
+    static void setUpName(String name) {
         // для исключения буквы "ё"
-        while (name.contains("ё")) {
-            name = generateName();
-        }
-
+        while (name.contains("ё")) name = generateName();
+    }
+    @BeforeAll
+    static void setUpListener() {
         SelenideLogger.addListener("allure", new AllureSelenide());
     }
 
