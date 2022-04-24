@@ -23,16 +23,18 @@ repositories {
     mavenCentral()
 }
 
-testCompile 'com.epam.reportportal:agent-java-junit5:5.1.2'
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'com.codeborne:selenide:6.4.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.17.3'
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
+    testCompile 'com.epam.reportportal:agent-java-junit5:5.1.2'
+
 }
 
 test {
     useJUnitPlatform()
     systemProperty 'selenide.headless', System.getProperty('selenide.headless')
+    systemProperty 'junit.jupiter.extensions.autodetection.enabled', true
 }
