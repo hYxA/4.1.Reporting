@@ -31,6 +31,8 @@ dependencies {
     testImplementation 'com.github.javafaker:javafaker:1.0.2'
     testCompile 'com.epam.reportportal:agent-java-junit5:5.1.2'
 
+    testImplementation group: 'org.slf4j', name: 'slf4j-nop', version: '2.0.0-alpha7'
+
 }
 
 test {
