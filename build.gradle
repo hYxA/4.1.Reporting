@@ -11,6 +11,7 @@ sourceCompatibility = 11
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
 
+
 allure {
     version = '2.16.1'
     useJUnit5 {
@@ -21,6 +22,8 @@ allure {
 repositories {
     mavenCentral()
 }
+
+testCompile 'com.epam.reportportal:agent-java-junit5:5.1.2'
 
 dependencies {
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
