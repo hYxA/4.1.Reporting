@@ -42,7 +42,12 @@ public class DataGenerator {
 
     public static String generateName() {
         Faker faker = new Faker(new Locale("ru"));
-        return faker.name().fullName();
+        String name = faker.name().fullName();
+//        String name = "Фёдор Фёдорович";  // проверочная строка
+        if (name.contains("ё")) {
+            name = name.replace("ё", "е");
+        }
+        return name;
     }
 
     public static String generatePhone() {
