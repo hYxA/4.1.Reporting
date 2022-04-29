@@ -20,8 +20,11 @@ allure {
 }
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
+
+testCompile 'com.epam.reportportal:agent-java-junit5:5.1.2'
 
 
 dependencies {
