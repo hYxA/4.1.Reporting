@@ -39,11 +39,9 @@ public class DataGenerator {
         return LocalDate.now().plusDays(shift).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
     }
 
-
     public static String generateName() {
         Faker faker = new Faker(new Locale("ru"));
         String name = faker.name().fullName();
-//        String name = "Фёдор Фёдорович";  // проверочная строка
         if (name.contains("ё")) {
             name = name.replace("ё", "е");
         }
