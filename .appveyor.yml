@@ -1,0 +1,39 @@
+image: Ubuntu  # образ для сборки
+
+stack: jdk 11  # версия JDK
+
+branches:
+  only:
+    - Report_Portal  # ветка git
+
+build: off  # будем использовать свой скрипт сборки
+
+install:
+  - chmod +x ./gradlew
+  # запускаем SUT (& означает, что в фоновом режиме - не блокируем терминал для запуска тестов)
+  - java -jar ./artifacts/app-card-delivery.jar &
+  - sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty edge"
+  - sudo apt update
+  - sudo apt install docker-ce
+  -
+build_script:
+  - ./gradlew test -Dselenide.headless=true --info
+
+
+notifications:
+  - provider: Email
+    # Список адресов
+    to:
+      - zybu@live.ru
+    # Отправлять ли письмо в случае успеха?
+    on_build_success: true
+    # Отправлять ли письмо в случае провала?
+    on_build_failure: false
+    # Отправлять ли письмо когда статус изменился?
+    on_build_status_changed: false
