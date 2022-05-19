@@ -21,6 +21,20 @@ install:
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu zesty edge"
   - sudo apt update
   - sudo apt install docker-ce
+  - sudo systemctl daemon-reload
+  - sudo systemctl restart docker
+  #  TEST: systemctl show --property=Environment docker
+  # >>> Environment=HTTP_PROXY=http://proxyhost:port/
+  - sudo docker run hello-world
+  # hello-world images will be download and run
+  # your will see output e.g. "Hello from Docker!  ... "
+  - sudo apt install python3-pip
+  - sudo pip3 install docker-compose
+  - mkdir reportportal
+  - cd reportportal
+    # get the docker-compose file
+  - wget https://raw.githubusercontent.com/reportportal/reportportal/master/docker-compose.yml
+  - docker-compose up
   -
 build_script:
   - ./gradlew test -Dselenide.headless=true --info
