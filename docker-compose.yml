@@ -133,9 +133,9 @@ services:
       POSTGRES_DB: reportportal
     volumes:
       # For unix host
-      - ./data/postgres:/var/lib/postgresql/data
+      # - ./data/postgres:/var/lib/postgresql/data
       # For windows host
-      # - postgres:/var/lib/postgresql/data
+       - postgres:/var/lib/postgresql/data
     # If you need to access the DB locally. Could be a security risk to expose DB.
     #    ports:
     #      - "5432:5432"
@@ -314,9 +314,9 @@ services:
     #  - '9000:9000'
     volumes:
       # For unix host
-      - ./data/storage:/data
+      # - ./data/storage:/data
       # For windows host
-      # - minio:/data
+      - minio:/data
     environment:
       MINIO_ACCESS_KEY: minio
       MINIO_SECRET_KEY: minio123
