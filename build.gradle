@@ -23,6 +23,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.projectlombok:lombok:1.18.22'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
     testImplementation 'com.codeborne:selenide:6.4.0'
     testImplementation 'io.qameta.allure:allure-selenide:2.17.3'
