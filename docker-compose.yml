@@ -328,7 +328,7 @@ services:
       retries: 3
     restart: always
 
-  # Docker volume for Windows host
-#volumes:
-#  postgres:
-#  minio:
+ #  Docker volume for Windows host
+volumes:
+  postgres:
+  minio:
